@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2zPNacmK0FM5Z80c7Whp2VuKCEdMSk28J8VoVkrYFOwE3twECOgWj04zuI+UnsAP+aRXyvTo6djB+96ZnAZE4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\1234\\source\\repos\\SQLFiller\\SQLFiller\\SQLFiller.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\1234\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}
