@@ -8,6 +8,19 @@ namespace SQLFiller
 {
     internal class Program
     {
+        static TimeSpan RandomTime()
+        {
+            Random random = new Random();
+            TimeSpan start = new TimeSpan();
+            return start.Add(new TimeSpan(random.Next(23), random.Next(59), random.Next(59)));
+        }
+        static DateTime RandomDay()
+        {
+            Random random = new Random();
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(random.Next(range));
+        }
         static string RandomString(int length)
         {
             Random random = new Random();
@@ -20,14 +33,24 @@ namespace SQLFiller
             //
             Random random = new Random();
             List<string> randomInput = new List<string>();
-            for (int i = 0; i < lines.Length - 1; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i].Contains("#")) continue;
-                if (lines[i].Contains("VARCHAR"))
+                else if (lines[i].Contains("VARCHAR"))
                 {
                     int start = lines[i].IndexOf("VARCHAR(") + "VARCHAR(".Length;
                     int count = int.Parse(lines[i].Substring(start, lines[i].IndexOf(")") - start));
                     randomInput.Add(RandomString(count));
+                }
+                else if (lines[i].Contains("DATETIME") || lines[i].Contains("DATETIME2"))
+                {
+                    var day = RandomDay();
+                    randomInput.Add($"{day.Year}-{day.Month}-{day.Day}");
+                }
+                else if (lines[i].Contains("TIME"))
+                {
+                    var time = RandomTime();
+                    randomInput.Add($"{time.Hours}:{time.Minutes}:{time.Seconds}");
                 }
                 else
                     randomInput.Add(random.Next(1, 16).ToString());
@@ -36,7 +59,6 @@ namespace SQLFiller
         }
         static string ParseSql(string str)
         {
-            //str = "CREATE TABLE vehicle(    # vehicleId: Unique ID for Primary Key.    # This is how we will reference a record  vehicleId INT NOT NULL,      make VARCHAR(64), # String 64 chars max    model VARCHAR(128),    derivative VARCHAR(255),    PRIMARY KEY(vehicleId) ); CREATE TABLE vehicle(    # vehicleId: Unique ID for Primary Key.    # This is how we will reference a record  vehicleId INT NOT NULL,      make VARCHAR(64), # String 64 chars max    model VARCHAR(128),    derivative VARCHAR(255),    PRIMARY KEY(vehicleId) );";
             string[] arr = str.Split("CREATE TABLE");
             string newscript = "";
             string result = "";
@@ -47,7 +69,7 @@ namespace SQLFiller
                 Console.WriteLine("Количество строк:");
                 rowCount = int.Parse(Console.ReadLine());
 
-                if (rowCount < 100 && rowCount >1) break;
+                if (rowCount < 100 && rowCount > 1) break;
             }
             foreach (var table in arr)
             {
@@ -56,9 +78,11 @@ namespace SQLFiller
                 string inner = table.Substring(table.IndexOf("("), table.IndexOf(");") - table.IndexOf("("));
 
                 string[] lines = inner.Split(",");
+
+                newscript += $"INSERT INTO {tableName} VALUES";
                 for (int i = 0; i < rowCount; i++)
                 {
-                    newscript += $"INSERT INTO {tableName} VALUES({getValues(lines)})\n";
+                    newscript += $"({getValues(lines)}),";
                 }
                 Console.WriteLine(newscript);
                 result += newscript;
@@ -69,7 +93,7 @@ namespace SQLFiller
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите путь к файлу:");
+            Console.WriteLine("Введите путь к файлу(или file.sql):");
             string path = Console.ReadLine();
             string result = readSql(path);
             string sql = ParseSql(result);
@@ -91,10 +115,7 @@ namespace SQLFiller
         static void writeSql(string text)
         {
             var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\result.sql";
-            if (!File.Exists(path))
-            {
-                File.WriteAllText(path, text);
-            }
+            File.WriteAllText(path, text);
         }
     }
 }
