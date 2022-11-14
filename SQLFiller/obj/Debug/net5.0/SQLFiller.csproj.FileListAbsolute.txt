@@ -1,0 +1,16 @@
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.exe
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.deps.json
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.runtimeconfig.json
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.runtimeconfig.dev.json
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.dll
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\ref\SQLFiller.dll
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\bin\Debug\net5.0\SQLFiller.pdb
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.csproj.AssemblyReference.cache
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.AssemblyInfoInputs.cache
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.AssemblyInfo.cs
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.csproj.CoreCompileInputs.cache
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.dll
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\ref\SQLFiller.dll
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.pdb
+C:\Users\1234\source\repos\SQLFiller\SQLFiller\obj\Debug\net5.0\SQLFiller.genruntimeconfig.cache
